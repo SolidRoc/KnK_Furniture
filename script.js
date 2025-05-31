@@ -20,30 +20,29 @@ sections.forEach(section => {
 
 // Mobile menu functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelectorAll('.nav-links');
+const leftNav = document.querySelector('.left-links');
+const rightNav = document.querySelector('.right-links');
 
 mobileMenuBtn.addEventListener('click', () => {
-    navLinks.forEach(nav => {
-        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
+    leftNav.classList.toggle('active');
+    rightNav.classList.toggle('active');
     mobileMenuBtn.classList.toggle('active');
 });
 
 // Close mobile menu when clicking a link
-navLinks.forEach(nav => {
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navLinks.forEach(nav => nav.style.display = 'none');
-                mobileMenuBtn.classList.remove('active');
-            }
-        });
+const allNavLinks = document.querySelectorAll('.nav-links a');
+allNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            leftNav.classList.remove('active');
+            rightNav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+        }
     });
 });
 
 // Add active state to mobile menu button
-document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-    this.classList.toggle('active');
+mobileMenuBtn.addEventListener('click', function() {
     const spans = this.querySelectorAll('span');
     if (this.classList.contains('active')) {
         spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
@@ -53,6 +52,20 @@ document.querySelector('.mobile-menu-btn').addEventListener('click', function() 
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
         spans[2].style.transform = 'none';
+    }
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        leftNav.classList.remove('active');
+        rightNav.classList.remove('active');
+        leftNav.style.display = 'flex';
+        rightNav.style.display = 'flex';
+    } else {
+        leftNav.style.display = 'none';
+        rightNav.style.display = 'none';
+        mobileMenuBtn.classList.remove('active');
     }
 });
 
@@ -68,14 +81,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-        navLinks.forEach(nav => nav.style.display = 'flex');
-    } else {
-        navLinks.forEach(nav => nav.style.display = 'none');
-        mobileMenuBtn.classList.remove('active');
-    }
 }); 

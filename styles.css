@@ -473,9 +473,19 @@ footer {
     }
 
     .image-container {
-        min-height: 300px;
-        margin: 0;
-        padding: 0;
+        min-height: auto;
+        height: auto;
+        aspect-ratio: 16/9;
+        position: relative;
+    }
+
+    .image-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .content {
@@ -509,6 +519,7 @@ footer {
         top: 80px;
         left: 0;
         right: 0;
+        width: 100%;
         background: #1a1a1d;
         flex-direction: column;
         align-items: center;
@@ -517,14 +528,29 @@ footer {
         z-index: 1000;
     }
 
+    .nav-links.left-links,
+    .nav-links.right-links {
+        display: none;
+    }
+
+    .nav-links.left-links.active,
+    .nav-links.right-links.active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
     .nav-links a {
         color: #ffffff;
         padding: 1rem 0;
-        width: 100%;
+        width: 80%;
         text-align: center;
+        margin: 0 auto;
     }
 
     .nav-links a::after {
+        width: 80%;
+        left: 10%;
         bottom: 0.8rem;
     }
 
@@ -593,9 +619,7 @@ footer {
     }
 
     .image-container {
-        min-height: 250px;
-        margin: 0;
-        padding: 0;
+        aspect-ratio: 4/3;
     }
 
     .baroque-section .btn-discover {
