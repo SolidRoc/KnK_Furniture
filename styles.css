@@ -1,3 +1,6 @@
+/* Import fonts - moving this to the top of the file */
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cinzel:wght@400;500;600&family=Marcellus&family=Gilda+Display&family=Cormorant+Unicase:wght@400;500;600&display=swap');
+
 /* Reset and base styles */
 html {
     scroll-behavior: smooth;
@@ -181,11 +184,21 @@ body {
     display: block;
     width: 25px;
     height: 2px;
-    background: #e8d5b5;
+    background: #ffffff;
     transition: 0.3s;
+    opacity: 0.9;
 }
 
-/* Mobile menu button active state */
+/* Update hover state */
+.mobile-menu-btn:hover span {
+    background: var(--accent-color);
+}
+
+/* Ensure active state maintains visibility */
+.mobile-menu-btn.active span {
+    background: #ffffff;
+}
+
 .mobile-menu-btn.active span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
 }
@@ -265,6 +278,7 @@ body {
     display: flex;
     align-items: center;
     overflow: hidden;
+    padding-top: 100px;
 }
 
 .hero-image {
@@ -306,7 +320,23 @@ body {
 .hero-content {
     position: relative;
     width: 100%;
-    padding: 0 4vw;
+    padding: 60px 4vw 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-initials {
+    font-family: 'Carattere', cursive;
+    font-size: 9vw;
+    color: #c0a88a;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    font-weight: normal;
 }
 
 .hero-section h1 {
@@ -318,7 +348,7 @@ body {
     font-weight: 400;
     color: #c0a88a;
     line-height: 1.2;
-    text-align: left;
+    text-align: center;
     margin: 0;
     width: 100%;
     display: block;
@@ -334,9 +364,7 @@ body {
     margin-top: 2rem;
     text-align: center;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
     padding-bottom: 10px;
 }
 
@@ -344,8 +372,10 @@ body {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 400px;
     height: 1px;
     background: linear-gradient(90deg, 
         transparent 0%,
@@ -550,6 +580,10 @@ footer {
         letter-spacing: 4px;
         white-space: normal;
     }
+
+    .hero-initials {
+        font-size: 7.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -634,7 +668,7 @@ footer {
     }
     
     .hero-content {
-        padding: 0 3vw;
+        padding-top: 40px;
     }
     
     .hero-section .subtitle {
@@ -667,6 +701,19 @@ footer {
         height: 90px;
         width: 90px;
         top: 8px;
+    }
+
+    .hero-initials {
+        font-size: 7rem;
+        text-align: center;
+    }
+
+    .hero-section .subtitle::after {
+        width: 80%;
+    }
+
+    .hero-section {
+        padding-top: 60px;
     }
 }
 
@@ -706,12 +753,13 @@ footer {
     }
     
     .hero-content {
-        padding: 0 2vw;
+        padding-top: 30px;
     }
     
     .hero-section .subtitle {
         font-size: 1rem;
         margin-top: 1rem;
+        letter-spacing: 2px;
     }
 
     .contact-text h3 {
@@ -725,6 +773,18 @@ footer {
     .contact-form input,
     .contact-form textarea {
         padding: 0.8rem 1.2rem;
+    }
+
+    .hero-initials {
+        font-size: 6rem;
+    }
+
+    .hero-section .subtitle::after {
+        width: 90%;
+    }
+
+    .hero-section {
+        padding-top: 40px;
     }
 }
 
@@ -1036,9 +1096,6 @@ footer {
 .baroque-section:nth-child(5) { animation-delay: 1.0s; }
 .baroque-section:nth-child(6) { animation-delay: 1.2s; }
 .baroque-section:nth-child(7) { animation-delay: 1.4s; }
-
-/* Update the font import to include Cinzel */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Marcellus&family=Gilda+Display&family=Cormorant+Unicase:wght@400;500;600&display=swap');
 
 /* Animation keyframes */
 @keyframes parallaxScroll {
