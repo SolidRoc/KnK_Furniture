@@ -20,12 +20,10 @@ sections.forEach(section => {
 
 // Mobile menu functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const leftNav = document.querySelector('.left-links');
-const rightNav = document.querySelector('.right-links');
+const navContainer = document.querySelector('.nav-container');
 
 mobileMenuBtn.addEventListener('click', () => {
-    leftNav.classList.toggle('active');
-    rightNav.classList.toggle('active');
+    navContainer.classList.toggle('active');
     mobileMenuBtn.classList.toggle('active');
 });
 
@@ -34,8 +32,7 @@ const allNavLinks = document.querySelectorAll('.nav-links a');
 allNavLinks.forEach(link => {
     link.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
-            leftNav.classList.remove('active');
-            rightNav.classList.remove('active');
+            navContainer.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
         }
     });
@@ -58,14 +55,11 @@ mobileMenuBtn.addEventListener('click', function() {
 // Handle window resize
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
-        leftNav.classList.remove('active');
-        rightNav.classList.remove('active');
-        leftNav.style.display = 'flex';
-        rightNav.style.display = 'flex';
-    } else {
-        leftNav.style.display = 'none';
-        rightNav.style.display = 'none';
+        navContainer.classList.remove('active');
+        navContainer.style.display = 'flex';
         mobileMenuBtn.classList.remove('active');
+    } else {
+        navContainer.style.display = 'none';
     }
 });
 
