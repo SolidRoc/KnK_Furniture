@@ -20,22 +20,18 @@ sections.forEach(section => {
 
 // Mobile menu functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelectorAll('.nav-links');
+const mobileMenu = document.querySelector('.mobile-menu');
 
 mobileMenuBtn.addEventListener('click', () => {
-    navLinks.forEach(nav => {
-        nav.classList.toggle('show');
-    });
+    mobileMenu.classList.toggle('show');
     mobileMenuBtn.classList.toggle('active');
 });
 
 // Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
+document.querySelectorAll('.mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
-            navLinks.forEach(nav => {
-                nav.classList.remove('show');
-            });
+            mobileMenu.classList.remove('show');
             mobileMenuBtn.classList.remove('active');
         }
     });
@@ -44,9 +40,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 // Handle window resize
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
-        navLinks.forEach(nav => {
-            nav.classList.remove('show');
-        });
+        mobileMenu.classList.remove('show');
         mobileMenuBtn.classList.remove('active');
     }
 });
