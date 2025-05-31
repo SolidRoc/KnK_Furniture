@@ -148,13 +148,28 @@ body {
     gap: 6px;
     cursor: pointer;
     z-index: 1001;
+    padding: 10px;
 }
 
 .mobile-menu-btn span {
     width: 25px;
     height: 2px;
-    background: var(--text-color);
+    background: #ffffff;
     transition: all 0.3s ease;
+    display: block;
+}
+
+/* Mobile menu button active state */
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Hero Section */
@@ -274,9 +289,11 @@ body {
 .image-container {
     flex: 1;
     min-height: 400px;
-    background: var(--light-bg);
+    background: #1a1a1d;
     border-radius: 12px;
     overflow: hidden;
+    line-height: 0;
+    font-size: 0;
 }
 
 .image-container img {
@@ -284,6 +301,9 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .content {
@@ -453,8 +473,9 @@ footer {
     }
 
     .image-container {
-        width: 100%;
         min-height: 300px;
+        margin: 0;
+        padding: 0;
     }
 
     .content {
@@ -488,11 +509,23 @@ footer {
         top: 80px;
         left: 0;
         right: 0;
-        background: white;
+        background: #1a1a1d;
         flex-direction: column;
         align-items: center;
         padding: 1rem 0;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links a {
+        color: #ffffff;
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a::after {
+        bottom: 0.8rem;
     }
 
     .mobile-menu-btn {
@@ -561,6 +594,8 @@ footer {
 
     .image-container {
         min-height: 250px;
+        margin: 0;
+        padding: 0;
     }
 
     .baroque-section .btn-discover {
