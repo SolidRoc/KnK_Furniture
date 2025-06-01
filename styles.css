@@ -1,5 +1,5 @@
-/* Import fonts - moving this to the top of the file */
-@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cinzel:wght@400;500;600&family=Marcellus&family=Gilda+Display&family=Cormorant+Unicase:wght@400;500;600&display=swap');
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cinzel:wght@400;500;600&family=Marcellus&family=Gilda+Display&family=Cormorant+Unicase:wght@400;500;600&family=Carattere&display=swap');
 
 /* Reset and base styles */
 html {
@@ -218,25 +218,27 @@ body {
     top: 80px;
     left: 0;
     width: 100%;
-    background: #1a1a1d;
+    background: rgba(26, 26, 29, 0.95);
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     z-index: 1001;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(192, 168, 138, 0.2);
 }
 
 .mobile-menu a {
     color: #e8d5b5;
     text-decoration: none;
     font-family: 'Cormorant Unicase', serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding: 1rem 0;
     width: 100%;
     text-align: center;
     position: relative;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .mobile-menu a::after {
@@ -254,6 +256,8 @@ body {
         #c0a88a 80%,
         transparent
     );
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .mobile-menu a:hover {
@@ -261,6 +265,7 @@ body {
 }
 
 .mobile-menu a:hover::after {
+    opacity: 1;
     background: linear-gradient(
         90deg,
         transparent,
@@ -269,6 +274,10 @@ body {
         #e8d5b5 80%,
         transparent
     );
+}
+
+.mobile-menu.show {
+    display: flex;
 }
 
 /* Hero Section */

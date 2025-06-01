@@ -23,17 +23,15 @@ const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
 
 mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('show');
     mobileMenuBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('show');
 });
 
 // Close mobile menu when clicking a link
 document.querySelectorAll('.mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            mobileMenu.classList.remove('show');
-            mobileMenuBtn.classList.remove('active');
-        }
+        mobileMenuBtn.classList.remove('active');
+        mobileMenu.classList.remove('show');
     });
 });
 
