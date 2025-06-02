@@ -35,6 +35,14 @@ document.querySelectorAll('.mobile-menu a').forEach(link => {
     });
 });
 
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && mobileMenu.classList.contains('show')) {
+        mobileMenuBtn.classList.remove('active');
+        mobileMenu.classList.remove('show');
+    }
+});
+
 // Handle window resize
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
